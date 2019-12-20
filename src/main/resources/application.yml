@@ -1,0 +1,25 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /ui
+#security:
+#  oauth2:
+#    resource:
+#      userInfoUri: http://localhost:8901/auth/user
+#    client:
+#      grant-type: client_credentials
+#      grant-type: authorization_code
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8081/user/me
+    client:
+      clientId: SampleClientId
+      clientSecret: secret
+      accessTokenUri: ${TOKEN_URL:http://localhost:8081}/oauth/token
+      userAuthorizationUri: ${USER_AUTH_URL:http://localhost:8081}/oauth/authorize
+      pre-established-redirect-uri: http://localhost:8082/ui/index
+spring:
+  main:
+    allow-bean-definition-overriding: true
+myClientId: 111
